@@ -11,6 +11,15 @@
 		<link rel="stylesheet" href="{% static 'bootstrap-3.3.7-dist/css/bootstrap-theme.css' %}">
 		<link rel="script" href="{% static 'bootstrap-3.3.7-dist/js/bootstrap.js' %}">
 		<link rel="stylesheet" href="{% static 'css/polls.css' %}">
+		{# Load the tag library #}
+		{% load bootstrap3 %}
+
+		{# Load CSS and JavaScript #}
+		{% bootstrap_css %}
+		{% bootstrap_javascript %}
+
+		{# Display django.contrib.messages as Bootstrap alerts #}
+		{% bootstrap_messages %}
 	</head>
 	<div class="page-header">
 		<h1> {{ ballot.ballot_text }}</h1>

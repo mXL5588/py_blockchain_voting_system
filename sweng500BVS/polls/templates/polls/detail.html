@@ -10,11 +10,38 @@
 		<link rel="stylesheet" href="{% static 'bootstrap-3.3.7-dist/css/bootstrap-theme.css' %}">
 		<link rel="script" href="{% static 'bootstrap-3.3.7-dist/js/bootstrap.js' %}">
 		<link rel="stylesheet" href="{% static 'css/polls.css' %}">
+		{# Load the tag library #}
+		{% load bootstrap3 %}
+
+		{# Load CSS and JavaScript #}
+		{% bootstrap_css %}
+		{% bootstrap_javascript %}
+
+		{# Display django.contrib.messages as Bootstrap alerts #}
+		{% bootstrap_messages %}
+
+		
+
 	</head>
+	<body>
+
+		
 
 	<div class="page-header">
+
+
+		{% buttons %}
+
+		 	<button class="btn btn-primary"><a href="/"></a>
+		      {% bootstrap_icon "home" %}
+		    	
+		    </button>
+  		{% endbuttons %}
+
 		<h1>{{ ballot.ballot_text }}</h1>
 		<small>Select a ballot candidate:</small>
+
+
 	</div>
 	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
@@ -26,7 +53,8 @@
 		<input type="radio" name="choice" id="choice{{forloop.counter}}" value="{{ choice.id }}" />
 		<label for="choice{{ forloop.counter }}" > {{ choice.choice_text }}</label>
 		<!-- Display/Hide Counterparty Address -->
-		<small for="choice{{ forloop.counter }}" > {{ choice.choice_address }}</small>
+		<br />
+		<small for="choice{{ forloop.counter }}" > Bitcoin Address: {{ choice.choice_address }}</small>
 		<br />
 
 		{% endfor %}
@@ -49,11 +77,11 @@
 		    <button type="button" class="btn btn-default">Previous Ballot</button>
 		  </div>
 		  <div class="btn-group" role="group">
-		    <button type="button" class="btn btn-default">Next Ballot</button>
+		 
 		  </div>
 		</div>
 
-		
+	</body>
 
 	<div class="page-footer">
 

@@ -14,7 +14,36 @@
 		<link rel="stylesheet" href="{% static 'bootstrap-3.3.7-dist/css/bootstrap-theme.css' %}">
 		<link rel="script" href="{% static 'bootstrap-3.3.7-dist/js/bootstrap.js' %}">
 		<link rel="stylesheet" href="{% static 'css/polls.css' %}">
+
+		{# Load the tag library #}
+		{% load bootstrap3 %}
+
+		{# Load CSS and JavaScript #}
+		{% bootstrap_css %}
+		{% bootstrap_javascript %}
+
+		{# Display django.contrib.messages as Bootstrap alerts #}
+		{% bootstrap_messages %}
 	</head>
+
+  {% buttons %}
+
+ 	<button type="submit" class="btn btn-primary"><a href="{% url 'polls:index'  %}"></a>
+      {% bootstrap_icon "home" %}
+    </button>
+    <button type="submit" class="btn btn-primary">
+      {% bootstrap_icon "info-sign" %} 
+    </button>
+    <button type="submit" class="btn btn-primary">
+      {% bootstrap_icon "user" %} Admin Login
+    </button>
+     <button type="submit" class="btn btn-primary">
+      {% bootstrap_icon "user" %} User Login
+    </button>
+
+
+  {% endbuttons %}
+
 
 <div class="row">
   <div class="col-md-4"></div>
@@ -35,6 +64,5 @@
 		<p>No polls area available.</p>
 	{% endif %}
 
-</div>
 
 </html>

@@ -6,6 +6,8 @@ from django.shortcuts import render
 from .models import Ballot, Choice
 from django.views import generic
 
+
+
 # Create your views here.
 
 def vote(request, ballot_id):
@@ -38,11 +40,9 @@ class IndexView(generic.ListView):
 		"""Return the last five published ballot"""
 		return Ballot.objects.order_by('-pub_date')[:5]
 
-
 class DetailView(generic.DetailView):
 	model = Ballot
 	template_name = 'polls/detail.html'
-
 
 class ResultsView(generic.DetailView):
 	model = Ballot
