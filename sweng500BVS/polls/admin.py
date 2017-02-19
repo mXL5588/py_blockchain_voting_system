@@ -4,12 +4,16 @@ from django.contrib import admin
 
 from .models import Ballot, Choice
 
+class ChoiceInline(admin.StackedInline):
+    model = Choice
+    extra = 3
+
 
 class BallotAdmin(admin.ModelAdmin):
-   fieldsets = [
+    fieldsets = [
         (None,               {'fields': ['ballot_text']}),
-        ('Date information', {'fields': ['pub_date']}),
+        ('Date information', {'fields': ['pub_date'], 'classes': ['collapse']}),
     ]
+    inlines = [ChoiceInline]
 
 admin.site.register(Ballot, BallotAdmin)
-admin.site.register(Choice)
