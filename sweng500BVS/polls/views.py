@@ -13,7 +13,7 @@ def vote(request, ballot_id):
 	ballot = get_object_or_404(Ballot, pk=ballot_id)
 
 	try:
-			selected_choice = ballot.choice_set.get(pk=request.POST['choice'])
+		selected_choice = ballot.choice_set.get(pk=request.POST['choice'])
 
 	except (KeyError, Choice.DoesNotExist):
 		# Redisplay the ballot voting form
