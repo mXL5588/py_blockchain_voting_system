@@ -22,6 +22,15 @@
 		{% bootstrap_messages %}
 	</head>
 	<div class="page-header">
+
+
+		{% buttons %}
+
+		 	<button class="btn btn-primary" onClick="javascript:history.go(-1);">
+		      {% bootstrap_icon "home" %}
+		    	
+		    </button>
+  		{% endbuttons %}
 		<h1> {{ ballot.ballot_text }}</h1>
 		<small>Vote Tally</small>
 	</div>
